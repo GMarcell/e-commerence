@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import Navbar from "@/components/navbar";
-
+import CategoryBadges from "@/components/product/category-badge";
+import Navbar from "@/components/layout/navbar";
 
 export default function Home() {
   return (
-    <div className="bg-red-600">
+    <div>
       <Navbar />
-      Hello
+      <CategoryBadges />
     </div>
   );
 }
