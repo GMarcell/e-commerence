@@ -9,7 +9,7 @@ interface UseProductsParams {
   page?: number;
   limit?: number;
   search?: string;
-  category?: string;
+  category?: string | null;
 }
 
 export const useProducts = ({
@@ -33,7 +33,7 @@ export const useProducts = ({
 
       return getProducts({ limit, skip });
     },
-    placeholderData: (previousData) => previousData,
+    // placeholderData: (previousData) => previousData,
     staleTime: 1000 * 60 * 5, // 5 minutes
   });
 };
