@@ -4,12 +4,21 @@ import { useProducts } from "@/hooks/useProducts";
 import { useProductFilterStore } from "@/store/product-filter";
 import ProductCard from "./product-card";
 import { Skeleton } from "../ui/skeleton";
+import { useEffect } from "react";
+import { limitProductPerPage } from "@/services/product.service";
 
 export default function ProductList() {
-  const { search, category, page } = useProductFilterStore();
+  const { search, category, page, minPrice, maxPrice, setTotalPages } =
+    useProductFilterStore();
   const { data, isLoading } = useProducts({ search, category, page });
 
-  console.log(isLoading);
+  const filteredProducts = data?.products.filter(
+    (p) => p.price >= minPrice && p.price <= maxPrice
+  );
+
+  useEffect(() => {
+    setTotalPages(Math.floor((data?.total ?? 1) / limitProductPerPage));
+  }, [data, setTotalPages]);
 
   if (isLoading)
     return (
@@ -26,7 +35,7 @@ export default function ProductList() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4 px-2 justify-items-center">
-      {data?.products.map((product) => (
+      {filteredProducts?.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>

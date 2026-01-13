@@ -2,6 +2,8 @@ import axios from "@/services/axios";
 import { Product, ProductListResponse } from "@/types/product";
 import { ProductCategory } from "@/types/product-category";
 
+export const limitProductPerPage = 20
+
 /**
  * Get all products (paginated)
  */
@@ -9,7 +11,7 @@ export const getProducts = async (params?: {
   limit?: number;
   skip?: number;
 }) => {
-  const { limit = 20, skip = 0 } = params || {};
+  const { limit = limitProductPerPage, skip = 0 } = params || {};
 
   const response = await axios.get<ProductListResponse>("/products", {
     params: { limit, skip },

@@ -17,7 +17,7 @@ const Navbar = () => {
   const [isSearchBarShow, setIsSearchBarShow] = useState(false);
   return (
     <header className="w-full border-b bg-background px-4">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="flex h-16 items-center justify-between">
         {/* Logo */}
         <Link href="/" className="text-xl font-bold">
           E Commerence

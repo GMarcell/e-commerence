@@ -18,7 +18,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <img
           src={product.thumbnail}
           alt={product.title}
-        //   className="object-cover w-full h-full"
+          className="object-cover w-full h-full"
           loading="lazy"
         />
       </div>
