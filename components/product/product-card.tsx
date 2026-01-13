@@ -12,7 +12,6 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  console.log(product);
   return (
     <Card className="w-full max-w-sm overflow-hidden hover:shadow-lg transition-shadow duration-200">
       {/* Image */}

@@ -16,8 +16,16 @@ export default function ProductList() {
     maxPrice,
     setTotalPages,
     minRating,
+    orderBy,
+    sortBy,
   } = useProductFilterStore();
-  const { data, isLoading } = useProducts({ search, category, page });
+  const { data, isLoading } = useProducts({
+    search,
+    category,
+    page,
+    orderBy,
+    sortBy,
+  });
 
   const filteredProducts = data?.products.filter(
     (p) => p.price >= minPrice && p.price <= maxPrice && p.rating >= minRating

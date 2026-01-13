@@ -4,6 +4,8 @@ import ProductList from "@/components/product/product-list";
 import PriceFilter from "@/components/filters/price-filter";
 import ProductPagination from "@/components/product/product-pagination";
 import RatingFilter from "@/components/filters/rating-filter";
+import SortBy from "@/components/filters/sort-by";
+import OrderBy from "@/components/filters/order-by";
 
 export default function Home() {
   return (
@@ -12,6 +14,8 @@ export default function Home() {
       <CategoryBadges />
       <PriceFilter />
       <RatingFilter />
+      <SortBy />
+      <OrderBy />
       <ProductList />
       <ProductPagination />
     </div>

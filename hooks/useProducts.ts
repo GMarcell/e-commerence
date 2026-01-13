@@ -1,4 +1,4 @@
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
   getProducts,
   searchProducts,
@@ -10,6 +10,8 @@ interface UseProductsParams {
   limit?: number;
   search?: string;
   category?: string | null;
+  sortBy?: string;
+  orderBy?: string;
 }
 
 export const useProducts = ({
@@ -17,11 +19,13 @@ export const useProducts = ({
   limit = 20,
   search,
   category,
+  sortBy,
+  orderBy,
 }: UseProductsParams = {}) => {
   const skip = page * limit;
 
   return useQuery({
-    queryKey: ["products", { page, limit, search, category }],
+    queryKey: ["products", { page, limit, search, category, sortBy, orderBy }],
     queryFn: () => {
       if (search) {
         return searchProducts(search);
@@ -31,7 +35,7 @@ export const useProducts = ({
         return getProductsByCategory(category);
       }
 
-      return getProducts({ limit, skip });
+      return getProducts({ limit, skip, sortBy, orderBy });
     },
     // placeholderData: (previousData) => previousData,
     staleTime: 1000 * 60 * 5, // 5 minutes
