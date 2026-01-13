@@ -17,7 +17,6 @@ export default function ProductPagination() {
   const isMobile = useMediaQuery("(max-width: 640px)");
   const MAX_VISIBLE = isMobile ? 5 : 7;
 
-  console.log(totalPages);
   const { start, end } = getPaginationRange(
     currentPage,
     totalPages,

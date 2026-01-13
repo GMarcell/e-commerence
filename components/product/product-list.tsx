@@ -8,12 +8,19 @@ import { useEffect } from "react";
 import { limitProductPerPage } from "@/services/product.service";
 
 export default function ProductList() {
-  const { search, category, page, minPrice, maxPrice, setTotalPages } =
-    useProductFilterStore();
+  const {
+    search,
+    category,
+    page,
+    minPrice,
+    maxPrice,
+    setTotalPages,
+    minRating,
+  } = useProductFilterStore();
   const { data, isLoading } = useProducts({ search, category, page });
 
   const filteredProducts = data?.products.filter(
-    (p) => p.price >= minPrice && p.price <= maxPrice
+    (p) => p.price >= minPrice && p.price <= maxPrice && p.rating >= minRating
   );
 
   useEffect(() => {
@@ -34,7 +41,7 @@ export default function ProductList() {
     );
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 px-2 justify-items-center">
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 px-2 justify-items-center">
       {filteredProducts?.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
