@@ -7,7 +7,6 @@ import ProductFilters from "@/components/filters";
 export default function Home() {
   return (
     <div>
-      <Navbar />
       <CategoryBadges />
       <ProductFilters />
       <ProductList />

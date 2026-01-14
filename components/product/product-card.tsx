@@ -6,21 +6,28 @@ import {
 } from "@/components/ui/card";
 import { Product } from "@/types/product";
 import { Button } from "../ui/button";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const router = useRouter();
   return (
-    <Card className="w-full max-w-sm overflow-hidden hover:shadow-lg transition-shadow duration-200">
+    <Card
+      className="w-full max-w-sm overflow-hidden hover:shadow-lg transition-shadow duration-200"
+      onClick={() => router.push(`/${product.id}`)}
+    >
       {/* Image */}
-      <div className="w-full h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
-        <img
+      <div className="relative w-full h-48 bg-gray-100 overflow-hidden">
+        <Image
           src={product.thumbnail}
           alt={product.title}
-          className="object-cover w-full h-full"
-          loading="lazy"
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 33vw"
         />
       </div>
 
