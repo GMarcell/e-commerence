@@ -2,6 +2,7 @@
 
 import { Slider } from "@/components/ui/slider";
 import { useProductFilterStore } from "@/store/product-filter";
+import { Input } from "../ui/input";
 
 const MIN_PRICE = 0;
 const MAX_PRICE = 10000;
@@ -10,7 +11,7 @@ export default function PriceFilter() {
   const { minPrice, maxPrice, setPriceRange } = useProductFilterStore();
 
   return (
-    <div className="w-full max-w-sm space-y-4 p-4">
+    <div className="w-full space-y-4 p-4">
       <div className="flex justify-between items-center">
         <h3 className="text-sm font-semibold">Price Range</h3>
         <span className="text-xs text-muted-foreground">
@@ -28,7 +29,7 @@ export default function PriceFilter() {
 
       {/* Optional numeric inputs */}
       <div className="flex gap-2">
-        <input
+        <Input
           type="number"
           value={minPrice}
           min={MIN_PRICE}
@@ -36,7 +37,7 @@ export default function PriceFilter() {
           onChange={(e) => setPriceRange(Number(e.target.value), maxPrice)}
           className="input input-bordered w-full"
         />
-        <input
+        <Input
           type="number"
           value={maxPrice}
           min={minPrice}

@@ -26,7 +26,7 @@ export default function OrderBy() {
         onValueChange={(e) => setOrderBy(e as OrderByOption)}
         value={orderBy}
       >
-        <SelectTrigger>
+        <SelectTrigger className="w-40">
           <SelectValue placeholder="Select Order By" />
         </SelectTrigger>
         <SelectContent>

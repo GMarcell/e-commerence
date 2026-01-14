@@ -32,9 +32,10 @@ export default function ProductCard({ product }: ProductCardProps) {
         <CardDescription className="text-sm text-gray-600 line-clamp-3">
           <div className="flex justify-between py-2">
             <div>
-              Rating: {product.rating} ({product.reviews.length} reviews)
+              <div>Rating: {product.rating}</div>
+              <div>({product.reviews.length} reviews)</div>
             </div>
-            <div>Price: ${product.price}</div>
+            <div className="flex items-center">Price: ${product.price}</div>
           </div>
           <Button className="w-full">Add To Cart</Button>
         </CardDescription>

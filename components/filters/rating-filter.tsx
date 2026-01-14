@@ -12,7 +12,7 @@ export default function RatingFilter() {
   };
 
   return (
-    <div className="space-y-2 p-4 flex items-center justify-between">
+    <div className="space-y-2 p-4 flex items-center justify-between md:flex-col">
       <div className="flex items-center m-0">
         <h3 className="text-sm font-semibold">Minimum Rating</h3>
       </div>
