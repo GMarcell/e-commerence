@@ -20,8 +20,6 @@ export const getProducts = async (params?: {
     orderBy = "asc",
   } = params || {};
 
-  console.log({ sortBy, orderBy });
-
   const response = await axios.get<ProductListResponse>("/products", {
     params: { limit, skip, sortBy, orderBy },
   });

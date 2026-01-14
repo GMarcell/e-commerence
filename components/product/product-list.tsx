@@ -35,7 +35,7 @@ export default function ProductList() {
     setTotalPages(Math.floor((data?.total ?? 1) / limitProductPerPage));
   }, [data, setTotalPages]);
 
-  if (isLoading)
+  if (isLoading || data === undefined)
     return (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-2 justify-items-center">
         <div className="flex flex-col space-y-3">
