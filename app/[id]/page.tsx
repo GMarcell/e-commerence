@@ -5,14 +5,14 @@ import StarRating from "@/components/star-rating";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useProduct } from "@/hooks/useProduct";
+import { useCartStore } from "@/store/cart.store";
 import { ShoppingCart } from "lucide-react";
 import { useParams } from "next/navigation";
 
 export default function ProductDetailsPage() {
   const params = useParams<{ id: string }>();
   const { data, isLoading } = useProduct(params.id);
-
-  console.log(data);
+  const { addToCart } = useCartStore();
 
   if (data === undefined || isLoading) {
     return <div>Loading.....</div>;
@@ -22,7 +22,7 @@ export default function ProductDetailsPage() {
     <div className="w-full flex flex-col relative overflow-hidden py-2 md:flex-row">
       <ProductCarousel images={data?.images ?? []} />
       <div className="p-4 flex flex-col justify-between">
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 mb-3">
           <h1 className="text-2xl font-bold">{data?.title}</h1>
           <div className="flex gap-4">
             <StarRating
@@ -44,7 +44,7 @@ export default function ProductDetailsPage() {
             ))}
           </div>
         </div>
-        <Button>
+        <Button onClick={() => addToCart(data!)}>
           <ShoppingCart />
           Add To Cart
         </Button>

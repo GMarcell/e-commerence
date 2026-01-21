@@ -9,6 +9,7 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ShoppingCart } from "lucide-react";
+import { useCartStore } from "@/store/cart.store";
 
 interface ProductCardProps {
   product: Product;
@@ -16,6 +17,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const router = useRouter();
+  const { addToCart } = useCartStore();
   return (
     <Card
       className="w-full max-w-sm overflow-hidden hover:shadow-lg transition-shadow duration-200"
@@ -45,7 +47,13 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
             <div className="flex items-center">Price: ${product.price}</div>
           </div>
-          <Button className="w-full">
+          <Button
+            className="w-full"
+            onClick={(e) => {
+              e.stopPropagation();
+              addToCart(product);
+            }}
+          >
             <ShoppingCart />
             Add To Cart
           </Button>
