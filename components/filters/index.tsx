@@ -5,8 +5,8 @@ import {
   AccordionTrigger,
 } from "../ui/accordion";
 import OrderBy from "./order-by";
-import PriceFilter from "./price-filter";
-import RatingFilter from "./rating-filter";
+import PriceFilter from "./price";
+import RatingFilter from "./rating";
 import SortBy from "./sort-by";
 
 export default function ProductFilters() {

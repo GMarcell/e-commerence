@@ -8,6 +8,7 @@ import { Product } from "@/types/product";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { ShoppingCart } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
@@ -44,7 +45,10 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
             <div className="flex items-center">Price: ${product.price}</div>
           </div>
-          <Button className="w-full">Add To Cart</Button>
+          <Button className="w-full">
+            <ShoppingCart />
+            Add To Cart
+          </Button>
         </CardDescription>
       </CardContent>
     </Card>

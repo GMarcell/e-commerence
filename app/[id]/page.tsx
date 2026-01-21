@@ -1,16 +1,12 @@
 "use client";
 
+import ProductCarousel from "@/components/product/carousel";
+import StarRating from "@/components/star-rating";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { useProduct } from "@/hooks/useProduct";
+import { ShoppingCart } from "lucide-react";
 import { useParams } from "next/navigation";
-import Image from "next/image";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
 
 export default function ProductDetailsPage() {
   const params = useParams<{ id: string }>();
@@ -24,30 +20,33 @@ export default function ProductDetailsPage() {
 
   return (
     <div className="w-full relative overflow-hidden py-2">
-      <Carousel className="w-full">
-        <CarouselContent>
-          {data.images.map((imgUrl, index) => (
-            <CarouselItem key={index} className="basis-1/3">
-              <div className="w-screen">
-                <Card className="w-full">
-                  <CardContent className="relative aspect-square p-0">
-                    <Image
-                      src={imgUrl}
-                      alt={`${index}`}
-                      fill
-                      className="object-cover"
-                      sizes="100vw"
-                    />
-                  </CardContent>
-                </Card>
-              </div>
-            </CarouselItem>
+      <ProductCarousel images={data?.images ?? []} />
+      <div className="p-4 flex flex-col gap-2">
+        <h1 className="text-2xl font-bold">{data?.title}</h1>
+        <div className="flex gap-4">
+          <StarRating
+            rating={Math.floor(data?.rating ?? 0)}
+            handleClick={() => {}}
+            isClickable={false}
+          />
+          <p>({data?.reviews.length} reviews)</p>
+        </div>
+        <p className="text-xl">Price: {data?.price}</p>
+        <p className="text-sm">Stock: {data?.stock}</p>
+        <p className="mt-4">{data?.description}</p>
+        <div className="flex gap-2 flex-row">
+          Category:{" "}
+          {data?.tags?.map((tag) => (
+            <Badge key={tag}>
+              <h1 className="text-sm">{tag}</h1>
+            </Badge>
           ))}
-        </CarouselContent>
-
-        <CarouselPrevious className="left-2" />
-        <CarouselNext className="right-2" />
-      </Carousel>
+        </div>
+        <Button>
+          <ShoppingCart />
+          Add To Cart
+        </Button>
+      </div>
     </div>
   );
 }

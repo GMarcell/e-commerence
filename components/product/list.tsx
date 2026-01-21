@@ -2,7 +2,7 @@
 
 import { useProducts } from "@/hooks/useProducts";
 import { useProductFilterStore } from "@/store/product-filter";
-import ProductCard from "./product-card";
+import ProductCard from "./card";
 import { Skeleton } from "../ui/skeleton";
 import { useEffect } from "react";
 import { limitProductPerPage } from "@/services/product.service";
