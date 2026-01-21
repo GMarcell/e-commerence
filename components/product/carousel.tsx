@@ -10,12 +10,12 @@ import Image from "next/image";
 
 export default function ProductCarousel({ images }: { images: string[] }) {
   return (
-    <Carousel className="w-full">
+    <Carousel className="w-full md:w-md lg:w-lg">
       <CarouselContent>
         {images.map((imgUrl, index) => (
           <CarouselItem key={index}>
-            <div className="w-screen">
-              <Card className="w-full">
+            <div className="w-full md:w-md lg:w-lg">
+              <Card>
                 <CardContent className="relative aspect-square p-0">
                   <Image
                     src={imgUrl}
