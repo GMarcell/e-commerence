@@ -1,6 +1,7 @@
 "use client";
 import { useCartStore } from "@/store/cart.store";
 import { Card, CardContent, CardTitle } from "../ui/card";
+import Link from "next/link";
 import { Button } from "../ui/button";
 
 export default function CartSummary() {
@@ -22,7 +23,9 @@ export default function CartSummary() {
           <h1>Total </h1>
           <h1 className="text-right">{(totalPrice() + tax).toFixed(2)}</h1>
           <div className="col-span-2">
-            <Button className="w-full">Checkout</Button>
+            <Link href="/checkout">
+              <Button className="w-full">Checkout</Button>
+            </Link>
           </div>
         </div>
       </CardContent>

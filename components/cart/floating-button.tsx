@@ -8,10 +8,12 @@ import { usePathname } from "next/navigation";
 export default function FloatingCartButton() {
   const hydrated = useCartStore.persist.hasHydrated();
   const totalItems = useCartStore((state) => state.totalItems());
-  const pathname = usePathname()
-  const isCartPage = pathname.includes('/cart')
+  const pathname = usePathname();
+  const isCartPage = pathname.includes("/cart");
+  const isCheckoutPage = pathname.includes("/checkout");
 
-  if (!hydrated || totalItems === 0 || isCartPage) return null;
+  if (!hydrated || totalItems === 0 || isCartPage || isCheckoutPage)
+    return null;
 
   return (
     <Link
