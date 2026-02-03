@@ -12,8 +12,10 @@ import { Menu, Search, X } from "lucide-react";
 import Link from "next/link";
 import { Input } from "../ui/input";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const router = useRouter();
   const [isSearchBarShow, setIsSearchBarShow] = useState(false);
   return (
     <header className="w-full border-b bg-background px-4">
@@ -45,7 +47,9 @@ const Navbar = () => {
               <Search />
             </Button>
           )}
-          <Button size="sm">Sign In</Button>
+          <Button size="sm" onClick={() => router.push("/login")}>
+            Sign In
+          </Button>
         </nav>
 
         {/* Mobile Nav */}
@@ -62,7 +66,9 @@ const Navbar = () => {
             </SheetHeader>
             <div className="flex flex-col gap-6 mt-6 px-4">
               <Input type="text" placeholder="Search Products" />
-              <Button className="mt-4">Sign In</Button>
+              <Button className="mt-4" onClick={() => router.push("/login")}>
+                Sign In
+              </Button>
             </div>
           </SheetContent>
         </Sheet>
