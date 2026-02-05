@@ -1,4 +1,5 @@
 import * as z from "zod";
+
 export const signUpFormSchema = z.object({
   fullName: z
     .string()
@@ -22,6 +23,13 @@ export const signUpFormSchema = z.object({
     .max(32, "Phone must be at most 32 characters."),
   password: z
     .string()
-    .min(12, "Password must be at least 12 characters.")
-    .max(32, "Password must be at most 32 characters."),
+    .min(8, "Password must be at least 8 characters")
+    .max(32, "Password must be at most 32 characters")
+    .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .regex(/[0-9]/, "Password must contain at least one number")
+    .regex(
+      /[^a-zA-Z0-9]/,
+      "Password must contain at least one special character",
+    ),
 });

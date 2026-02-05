@@ -24,28 +24,20 @@ export const formatCVV = (value: string) =>
   value.replace(/\D/g, "").slice(0, 3);
 
 export const formatPostalCode = (value: string) =>
-  value.replace(/\D/g, "").slice(0, 5)
+  value.replace(/\D/g, "").slice(0, 5);
 
 export const formatPhoneNumber = (value: string) => {
-  // keep + only if first char
-  let input = value.replace(/[^\d+]/g, "")
-  if (input.includes("+")) {
-    input = "+" + input.replace(/\+/g, "")
-  }
+  if (!value) return "";
 
-  // limit digits (E.164 max)
-  const digits = input.replace(/\D/g, "").slice(0, 15)
+  // Remove all non-numeric characters
+  const digits = value.replace(/\D/g, "");
 
-  // re-add +
-  const hasPlus = input.startsWith("+")
-  let formatted = hasPlus ? "+" + digits : digits
+  // Limit length (example: max 13 digits)
+  const limited = digits.slice(0, 13);
 
-  // simple grouping: +62 812 3456 7890
-  formatted = formatted.replace(
-    /^(\+\d{1,3})(\d{3})(\d{4})(\d+)?/,
-    "$1 $2 $3 $4"
-  )
+  // Format: 0812-3456-7890
+  if (limited.length <= 4) return limited;
+  if (limited.length <= 8) return `${limited.slice(0, 4)}-${limited.slice(4)}`;
 
-  return formatted.trim()
-}
-
+  return `${limited.slice(0, 4)}-${limited.slice(4, 8)}-${limited.slice(8)}`;
+};
