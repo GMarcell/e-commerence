@@ -8,7 +8,7 @@ export default function CheckoutOrderSummary() {
   const totalPriceTax = totalPrice() + totalPrice() * 0.11;
 
   return (
-    <Card>
+    <Card className="lg:min-w-md">
       <CardTitle className="px-4">Order Summary</CardTitle>
       <CardContent>
         <h1>Items: {totalItems()}</h1>

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState } from "react";
 import { Card, CardContent, CardTitle } from "../ui/card";
@@ -10,7 +10,7 @@ export default function CheckoutShippingInfo() {
   const [postalCode, setPostalCode] = useState("");
   const [phone, setPhone] = useState("");
   return (
-    <Card className="rounded-md">
+    <Card className="rounded-md lg:min-w-md">
       <CardTitle className="p-4">Shipping Info</CardTitle>
       <CardContent>
         <FieldGroup>

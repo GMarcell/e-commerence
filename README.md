@@ -1,36 +1,183 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 Next.js E-Commerce Frontend
 
-## Getting Started
+A modern e-commerce frontend built with **Next.js App Router**, **TypeScript**, and **shadcn/ui**.  
+This project focuses on performance, scalability, clean UI, and type-safe state & form handling.
 
-First, run the development server:
+---
+
+## 🚀 Tech Stack
+
+- **Next.js (App Router)**
+- **TypeScript**
+- **Tailwind CSS**
+- **shadcn/ui + Radix UI**
+- **Zustand** – global state management
+- **React Hook Form** – form handling
+- **Zod** – schema validation
+- **Lucide React** – icons
+
+---
+
+## ✨ Features
+
+### 🛍 Cart System
+
+- Add products to cart
+- Auto-increment quantity for existing items
+- Remove items from cart
+- Floating cart button
+- Global cart state using Zustand
+
+### 🔍 Filtering & Sorting
+
+- Rating filter (⭐ 1–5)
+- Price range slider
+- Sort by price, rating, or newest
+- Order ascending / descending
+
+### 📝 Forms & Validation
+
+- Sign up & checkout forms
+- Type-safe validation with Zod
+- React Hook Form integration
+- Accessible error handling
+
+### 🎨 UI / UX
+
+- Responsive layout
+- Reusable components
+- Accessible (keyboard & screen reader friendly)
+- Clean and minimal design
+
+---
+
+## 📦 Data Source
+
+Product data is fetched from the **DummyJSON API** to simulate a real-world e-commerce backend.
+
+This allows the project to focus on:
+
+- API integration
+- Asynchronous data handling
+- State management and UI logic
+
+The API can be easily replaced with a real backend without changing the core architecture.
+
+---
+
+## 📂 Project Structure
+
+```bash
+src/
+├── app/                   # Next.js App Router
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+│   ├── cart/              # Cart & floating cart button
+│   ├── filters/           # Rating, price, sort components
+│   └── ui/                # shadcn/ui components
+├── store/
+│   └── cart-store.ts      # Zustand cart store
+├── lib/
+│   ├── schemas/           # Zod schemas
+│   └── utils.ts
+├── styles/
+└── types/
+```
+
+## 🧠 State Management (Zustand)
+
+The cart state is handled globally using Zustand:
+
+- Prevents duplicate products
+- Automatically updates quantity
+- Optimized re-renders
+- Fully type-safe
+
+Example responsibilities:
+
+- addItem
+- removeItem
+- increaseQuantity
+- decreaseQuantity
+- clearCart
+
+Zustand was chosen for its minimal API, excellent TypeScript support, and suitability for managing global UI state without unnecessary boilerplate.
+
+## 🛠 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+### ▶️ Run Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open in browser:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🧪 Available Scripts
 
-## Learn More
+```bash
+npm run dev       # Start development server
+npm run build     # Build for production
+npm run start     # Start production server
+npm run lint      # Run ESLint
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 🔐 Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Create a .env.local file if needed:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```js
+NEXT_PUBLIC_API_URL = your_api_url_here;
+```
 
-## Deploy on Vercel
+## ⚠️ Limitations
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- This project is frontend-focused
+- Uses a mock API (DummyJSON)
+- No real payment processing
+- No authentication flow
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+### 🧩 Future Improvements
+
+- Persist cart using localStorage
+- Authentication (NextAuth)
+- Payment gateway integration
+- Backend API connection
+- Product pagination & search
+- Unit & integration testing
+
+### 📄 License
+
+MIT License
+
+### 👤 Author
+
+Grand Marcell
+<br>
+Frontend Developer (React & Next.js)
+<br>
+Based in Indonesia 🇮🇩
+<br>
+Aspiring to work in the Netherlands 🇳🇱
+
+## ⭐ If you like this project, feel free to give it a star!

@@ -13,7 +13,7 @@ export default function CheckoutPaymentForm() {
   const [ccv, setCcv] = useState("");
 
   return (
-    <Card className="max-w-md">
+    <Card className="lg:min-w-md">
       <CardHeader>
         <CardTitle>Payment Details</CardTitle>
       </CardHeader>
